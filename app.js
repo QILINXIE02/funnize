@@ -50,3 +50,36 @@ function addExpense() {
     person2Input.value = '0';
     cell3.appendChild(person2Input);
 }
+
+// Function to add a new expense row
+function addExpense() {
+  const table = document.getElementById('expensesTable');
+  const newRow = table.insertRow(table.rows.length - 1);
+
+  // Add cells for delete button, expense name, Person 1 amount, and Person 2 amount
+  for (let i = 0; i < 4; i++) {
+    const cell = newRow.insertCell(i);
+
+    if (i === 0) {
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = function () {
+        deleteExpenseRow(this);
+      };
+      cell.appendChild(deleteButton);
+    } else {
+      const input = document.createElement(i === 1 ? 'input' : 'input');
+      input.type = i === 1 ? 'text' : 'number';
+      input.classList.add('expenseInput');
+      input.value = i === 1 ? '' : '0';
+      cell.appendChild(input);
+    }
+  }
+}
+
+// Function to delete an expense row
+function deleteExpenseRow(button) {
+  const row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
