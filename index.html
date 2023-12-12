@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css" />
+    <!-- <link rel="stylesheet" href="reset.css" /> -->
     <link rel="stylesheet" href="style.css" />
     <title>Income and Expenses Tracker</title>
 </head>
@@ -59,7 +59,7 @@
   <td><input type="number" class="expenseInput" value="30"></td>
 </tr>
 <tr>
-  <td>Gas (~110)</td>
+  <td>Natural Gas (~110)</td>
   <td><input type="number" class="expenseInput" value="116.92"></td>
   <td><input type="number" class="expenseInput" value="0"></td>
 </tr>
@@ -69,40 +69,65 @@
   <td>Student loans person #1 </td>
   <td><input type="number" class="expenseInput" value="138"></td>
   <td><input type="number" class="expenseInput" value="0"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>Student loans person #2</td>
   <td><input type="number" class="expenseInput" value="0"></td>
   <td><input type="number" class="expenseInput" value="300"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 
   <td>Gas </td>
   <td><input type="number" class="expenseInput" value="75"></td>
   <td><input type="number" class="expenseInput" value="250"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>other (short term): court, car devices</td>
   <td><input type="number" class="expenseInput" value="0"></td>
      <td><input type="number" class="expenseInput" value="300"></td>
+     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>other (Long term): car insurance</td>
   <td><input type="number" class="expenseInput" value="0"></td>
      <td><input type="number" class="expenseInput" value="300"></td>
+     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>Miscellaneous, Entertainments</td>
   <td><input type="number" class="expenseInput" value="200"></td>
      <td><input type="number" class="expenseInput" value="0"></td>
+     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 </table>
 
 <button type="button" onclick="addExpense()">Add Expense</button>
+<br><br>
+
+<div id="person1Results">
+  <p>Person 1 Total Expenses: <span id="person1TotalExpenses" class="total">$0.00</span></p>
+  <p>Person 1 Leftover Money: <span id="person1LeftoverMoney" class="total">$0.00</span></p>
+</div>
+
+<div id="person2Results">
+  <p>Person 2 Total Expenses: <span id="person2TotalExpenses" class="total">$0.00</span></p>
+  <p>Person 2 Leftover Money: <span id="person2LeftoverMoney" class="total">$0.00</span></p>
+</div>
 
 <div id="results">
     <p>Total Expenses: <span id="totalExpenses" class="total">$0</span></p>
     <p>Leftover Money: <span id="leftoverMoney" class="total">$0</span></p>
 </div>
+
+<br><p>Summary
+  🏠 This page outlines shared and individual expenses for two people living together, covering house-related costs and individual financial responsibilities.</p>
+
+
+<footer>
+  <p>&copy; 2023 Qilin Xie. All rights reserved.</p>
+</footer>
 
 <script src="app.js"></script>
 <script src="button.js"></script>
