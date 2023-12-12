@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Income and Expenses Tracker</title>
+</head>
+<body>
+  <button id="toggle-mode" class="highlight">Dark Mode</button><br><br>
+
+  <form id="incomeForm">
+    <label for="person1Income">Person 1 Income:</label>
+    <input type="number" id="person1Income" value="3000" required>
+
+    <label for="person2Income">Person 2 Income:</label>
+    <input type="number" id="person2Income" value="2500" required>
+
+    <button type="button" onclick="calculate()">Calculate</button>
+</form>
+
+<table id="expensesTable">
+    <tr>
+        <th>Monthly Expense</th>
+        <th>Person 1 Amount</th>
+        <th>Person 2 Amount</th>
+    </tr>
+    <tr>
+      <td>Rent</td>
+      <td><input type="number" class="expenseInput" value="1595"></td>
+      <td><input type="number" class="expenseInput" value="0"></td>
+  </tr>
+  <tr>
+  <td>Garbage</td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+  <td><input type="number" class="expenseInput" value="35"></td>
+</tr>
+    <tr>
+      <td>Water (~100)</td>
+      <td><input type="number" class="expenseInput" value="101.98"></td>
+      <td><input type="number" class="expenseInput" value="0"></td>
+  </tr>
+  <tr>
+    <td>Eletricity (~75)</td>
+    <td><input type="number" class="expenseInput" value="75"></td>
+    <td><input type="number" class="expenseInput" value="0"></td>
+</tr>
+<tr>
+  <td>Gas (~110)</td>
+  <td><input type="number" class="expenseInput" value="116.92"></td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+</tr>
+
+<tr>
+  <td>internet(~30) </td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+  <td><input type="number" class="expenseInput" value="30"></td>
+</tr>
+<tr>
+  <td>student loans person #1 </td>
+  <td><input type="number" class="expenseInput" value="138"></td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+</tr>
+<tr>
+  <td>student loans person #2</td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+  <td><input type="number" class="expenseInput" value="300"></td>
+</tr>
+<tr>
+  <td>groceries (min 300) </td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+</tr>
+<tr>
+  <td>other (short term): court, car devices</td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+     <td><input type="number" class="expenseInput" value="300"></td>
+</tr>
+<tr>
+  <td>other (Long term): car insurance</td>
+  <td><input type="number" class="expenseInput" value="0"></td>
+     <td><input type="number" class="expenseInput" value="300"></td>
+</tr>
+<tr>
+  <td>Miscellaneous, Entertainments</td>
+  <td><input type="number" class="expenseInput" value="200"></td>
+     <td><input type="number" class="expenseInput" value="0"></td>
+</tr>
+</table>
+
+<button type="button" onclick="addExpense()">Add Expense</button>
+
+<div id="results">
+    <p>Total Expenses: <span id="totalExpenses" class="total">$0</span></p>
+    <p>Leftover Money: <span id="leftoverMoney" class="total">$0</span></p>
+</div>
+
+<script src="app.js"></script>
+<script src="button.js"></script>
+
+</body>
+</html>
+
