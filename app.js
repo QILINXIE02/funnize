@@ -50,3 +50,4 @@ function addExpense() {
   person2Input.value = '0';
   cell3.appendChild(person2Input);
 }
+
