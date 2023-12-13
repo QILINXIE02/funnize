@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="reset.css" /> -->
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Income and Expenses Tracker</title>
 </head>
 <body>
@@ -117,31 +117,38 @@
 </table>
 
 <button type="button" onclick="addExpense()">Add Expense</button>
+<button id="calculateButton" type="button">Calculate</button>
 <br><br>
 
-<div id="person1Results">
-  <p>Person 1 Total Expenses: <span id="person1TotalExpenses" class="total">$0.00</span></p>
-  <p>Person 1 Leftover Money: <span id="person1LeftoverMoney" class="total">$0.00</span></p>
-</div>
-
-<div id="person2Results">
-  <p>Person 2 Total Expenses: <span id="person2TotalExpenses" class="total">$0.00</span></p>
-  <p>Person 2 Leftover Money: <span id="person2LeftoverMoney" class="total">$0.00</span></p>
-</div>
-
 <div id="results">
+  <div id="person1Results">
+    <p>Person 1 Total Expenses: <span id="person1TotalExpenses" class="total">$0.00</span></p>
+    <p>Person 1 Leftover Money: <span id="person1LeftoverMoney" class="total">$0.00</span></p>
+  </div>
+
+  <div id="person2Results">
+    <p>Person 2 Total Expenses: <span id="person2TotalExpenses" class="total">$0.00</span></p>
+    <p>Person 2 Leftover Money: <span id="person2LeftoverMoney" class="total">$0.00</span></p>
+  </div>
+
+  <div>
     <p>Total Expenses: <span id="totalExpenses" class="total">$0</span></p>
     <p>Leftover Money: <span id="leftoverMoney" class="total">$0</span></p>
+  </div>
 </div>
-
-<br><p>Summary
-  🏠 This page outlines shared and individual expenses for two people living together, covering house-related costs and individual financial responsibilities.</p>
 
 <div id="expenseChartContainer">
-  <canvas id="expenseChart"></canvas>
-  <p>Pie Chart coming soon!~</p>
+  <canvas id="expenseChart" width="400" height="400"></canvas>
+  <p>Pie Chart~</p>
 </div>
 
+
+<canvas id="houseExpenseChart" width="30" height="15"></canvas>
+<canvas id="individualExpenseChart" width="30" height="15"></canvas>
+
+<br>
+<br><p>Summary
+  🏠 This page outlines shared and individual expenses for two people living together, covering house-related costs and individual financial responsibilities.</p>
 
 <footer>
   <p>&copy; 2023 Qilin Xie. All rights reserved.</p>
@@ -149,7 +156,7 @@
 
 <script src="app.js"></script>
 <script src="dark.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>
 

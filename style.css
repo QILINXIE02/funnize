@@ -45,8 +45,28 @@ th {
     color: green;
 }
 
-
 Footer {
   color: black;
   text-align: center;
+}
+
+#expenseChartContainer {
+  width: 300px; 
+  height: 300px; 
+  margin-top: 20px; 
+}
+
+
+#houseExpenseChart,
+#individualExpenseChart {
+  width: 300px;
+  height: 150px;
+  margin-top: 20px;
+}
+
+
+#results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

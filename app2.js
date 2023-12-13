@@ -15,6 +15,14 @@ function calculate() {
       totalExpenses += inputValue;
   });
 
+   // Validate expenses against income
+   if (totalExpenses > totalIncome) {
+    // Expenses exceed income, show alert and clear results
+    alert("Expenses cannot exceed total income!");
+    clearResults();
+    return;
+  }
+
   // Calculate leftover money
   const leftoverMoney = totalIncome - totalExpenses;
 
@@ -83,3 +91,37 @@ function deleteExpenseRow(button) {
 const row = button.parentNode.parentNode;
 row.parentNode.removeChild(row);
 }
+
+// Add this code at the end of your existing JavaScript
+
+// Function to update the pie chart
+function updatePieChart(totalExpenses, leftoverMoney) {
+  const expenseChartCanvas = document.getElementById('expenseChart');
+  const expenseChartContext = expenseChartCanvas.getContext('2d');
+
+  // Clear previous chart
+  if (window.myPieChart) {
+    window.myPieChart.destroy();
+  }
+
+  // Create a new pie chart
+  window.myPieChart = new Chart(expenseChartContext, {
+    type: 'pie',
+    data: {
+      labels: ['Total Expenses', 'Leftover Money'],
+      datasets: [{
+        data: [totalExpenses, leftoverMoney],
+        backgroundColor: ['#FF6384', '#36A2EB'], // Example colors, you can customize these
+        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+      }],
+    },
+  });
+}
+
+// Update this line in your calculate function to call the updatePieChart function
+// Update the UI with the calculated values
+document.getElementById('totalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
+document.getElementById('leftoverMoney').textContent = `$${leftoverMoney.toFixed(2)}`;
+
+// Add this line to update the pie chart
+updatePieChart(totalExpenses, leftoverMoney);
