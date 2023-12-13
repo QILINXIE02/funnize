@@ -11,14 +11,20 @@
   <button id="toggle-mode" class="highlight">Dark Mode</button><br><br>
 
   <form id="incomeForm">
+    <label for="person1Name">Name for Person 1:</label>
+    <input type="text" id="person1Name" placeholder="Enter name" required>
+
     <label for="person1Income">(after tax) Person 1 Income:</label>
     <input type="number" id="person1Income" value="3000" required>
+
+    <label for="person2Name">Name for Person 2:</label>
+    <input type="text" id="person2Name" placeholder="Enter name" required>
 
     <label for="person2Income">Person 2 Income:</label>
     <input type="number" id="person2Income" value="2300" required>
 
     <button type="button" onclick="calculate()">Calculate</button>
-</form>
+  </form>
 
 <table id="expensesTable">
     <tr>
@@ -124,13 +130,18 @@
 <br><p>Summary
   🏠 This page outlines shared and individual expenses for two people living together, covering house-related costs and individual financial responsibilities.</p>
 
+<div id="expenseChartContainer">
+  <canvas id="expenseChart"></canvas>
+  <p>Pie Chart coming soon!~</p>
+</div>
+
 
 <footer>
   <p>&copy; 2023 Qilin Xie. All rights reserved.</p>
 </footer>
 
 <script src="app.js"></script>
-<script src="button.js"></script>
+<script src="dark.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

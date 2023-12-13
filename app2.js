@@ -15,14 +15,6 @@ function calculate() {
       totalExpenses += inputValue;
   });
 
-   // Validate expenses against income
-   if (totalExpenses > totalIncome) {
-    // Expenses exceed income, show alert and clear results
-    alert("Expenses cannot exceed total income!");
-    clearResults();
-    return;
-  }
-
   // Calculate leftover money
   const leftoverMoney = totalIncome - totalExpenses;
 
