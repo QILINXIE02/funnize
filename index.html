@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <title>Income and Expenses Tracker</title>
 </head>
 <body>
@@ -137,17 +137,26 @@
   </div>
 </div>
 
-<div id="expenseChartContainer">
-  <canvas id="expenseChart" width="400" height="400"></canvas>
-  <p>Pie Chart~</p>
+<div id="chartContainer">
+  <div class="chart">
+    <canvas id="expenseChart" width="400" height="400"></canvas>
+    <p>Click Calculate to activate Pie Chart~</p>
+  </div>
+
+  <div class="chart">
+    <canvas id="houseExpenseChart" width="400" height="200"></canvas>
+    <p>*Note:these numbers are preset to the website numbers</p>
+  </div>
+
+  <div class="chart">
+    <canvas id="individualExpenseChart" width="400" height="200"></canvas>
+    <p>*Note:these numbers are preset to the website numbers</p>
+  </div>
 </div>
 
 
-<canvas id="houseExpenseChart" width="30" height="15"></canvas>
-<canvas id="individualExpenseChart" width="30" height="15"></canvas>
-
 <br>
-<br><p>Summary
+<br><p class="centered-text">Summary
   🏠 This page outlines shared and individual expenses for two people living together, covering house-related costs and individual financial responsibilities.</p>
 
 <footer>

@@ -50,18 +50,30 @@ Footer {
   text-align: center;
 }
 
-#expenseChartContainer {
-  width: 300px; 
-  height: 300px; 
-  margin-top: 20px; 
+#chartContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+.chart {
+  width: 48%; /* Adjust the width as needed, leaving some space between charts */
+  max-width: 400px; /* Set a maximum width */
+  margin: 20px 0; /* Adjust the margin as needed */
+}
+
+#expenseChart {
+  width: 100%; /* Make it full-width for responsiveness */
+  max-width: 400px; /* Set a maximum width */
+  height: 400px; /* Adjust the height for better visualization */
+}
 
 #houseExpenseChart,
 #individualExpenseChart {
-  width: 300px;
-  height: 150px;
-  margin-top: 20px;
+  width: 100%; /* Make it full-width for responsiveness */
+  max-width: 400px; /* Set a maximum width */
+  height: 200px; /* Adjust the height for better visualization */
+  margin-top: 160px; /* Adjust the margin to align with the bottom of the pie chart */
 }
 
 
@@ -69,4 +81,8 @@ Footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.centered-text {
+  text-align: center;
 }

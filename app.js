@@ -250,3 +250,4 @@ function updateBarCharts() {
 
 // Call the updateBarCharts function when the page loads
 document.addEventListener('DOMContentLoaded', updateBarCharts);
+
