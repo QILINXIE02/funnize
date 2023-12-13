@@ -21,7 +21,7 @@
     <input type="text" id="person2Name" placeholder="Enter name" required>
 
     <label for="person2Income">Person 2 Income:</label>
-    <input type="number" id="person2Income" value="2300" required>
+    <input type="number" id="person2Income" value="2400" required>
 
     <button type="button" onclick="calculate()">Calculate</button>
   </form>
@@ -37,50 +37,57 @@
       <td>Rent</td>
       <td><input type="number" class="expenseInput" value="1595"></td>
       <td><input type="number" class="expenseInput" value="0"></td>
+      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
   </tr>
   <tr>
   <td>Garbage</td>
   <td><input type="number" class="expenseInput" value="0"></td>
   <td><input type="number" class="expenseInput" value="35"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
     <tr>
       <td>Water (~100)</td>
       <td><input type="number" class="expenseInput" value="101.98"></td>
       <td><input type="number" class="expenseInput" value="0"></td>
+      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
   </tr>
   <tr>
     <td>Eletricity (~75)</td>
     <td><input type="number" class="expenseInput" value="75"></td>
     <td><input type="number" class="expenseInput" value="0"></td>
+    <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>Groceries (min 300) </td>
   <td><input type="number" class="expenseInput" value="400"></td>
   <td><input type="number" class="expenseInput" value="0"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
 <tr>
   <td>Internet(~30) </td>
   <td><input type="number" class="expenseInput" value="0"></td>
-  <td><input type="number" class="expenseInput" value="30"></td>
+  <td><input type="number" class="expenseInput" value="20"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>Natural Gas (~110)</td>
   <td><input type="number" class="expenseInput" value="116.92"></td>
   <td><input type="number" class="expenseInput" value="0"></td>
+  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr><td><strong>Individual expense</strong></td></tr>
 
 <tr>
   <td>Student loans person #1 </td>
   <td><input type="number" class="expenseInput" value="138"></td>
-  <td><input type="number" class="expenseInput" value="0"></td>
+  <td><input type="number" class="expenseInput" value="550"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 <tr>
   <td>Student loans person #2</td>
   <td><input type="number" class="expenseInput" value="0"></td>
-  <td><input type="number" class="expenseInput" value="300"></td>
+  <td><input type="number" class="expenseInput" value="150"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 
@@ -103,8 +110,8 @@
 </tr>
 <tr>
   <td>Miscellaneous, Entertainments</td>
-  <td><input type="number" class="expenseInput" value="200"></td>
-     <td><input type="number" class="expenseInput" value="0"></td>
+  <td><input type="number" class="expenseInput" value="500"></td>
+     <td><input type="number" class="expenseInput" value="100"></td>
      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
 </table>
