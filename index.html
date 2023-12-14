@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <title>Income and Expenses Tracker</title>
 </head>
 <body>
@@ -33,44 +35,43 @@
         <th>Person 2 Amount</th>
     </tr>
     <tr><td><strong>House shared expense</strong></td></tr>
-    <tr>
+    <tr class="expense-row">
       <td>Rent</td>
       <td><input type="number" class="expenseInput" value="1595"></td>
       <td><input type="number" class="expenseInput" value="0"></td>
       <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
   </tr>
-  <tr>
+  <tr class="expense-row">
   <td>Garbage</td>
   <td><input type="number" class="expenseInput" value="0"></td>
   <td><input type="number" class="expenseInput" value="35"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-    <tr>
+<tr class="expense-row">
       <td>Water (~100)</td>
       <td><input type="number" class="expenseInput" value="101.98"></td>
       <td><input type="number" class="expenseInput" value="0"></td>
       <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
   </tr>
-  <tr>
+  <tr class="expense-row">
     <td>Eletricity (~75)</td>
     <td><input type="number" class="expenseInput" value="75"></td>
     <td><input type="number" class="expenseInput" value="0"></td>
     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
-  <td>Groceries (min 300) </td>
+ <tr class="expense-row">
+  <td>Groceries</td>
   <td><input type="number" class="expenseInput" value="400"></td>
   <td><input type="number" class="expenseInput" value="0"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
-<tr>
-  <td>Internet(~30) </td>
+<tr class="expense-row">
+  <td>Internet </td>
   <td><input type="number" class="expenseInput" value="0"></td>
   <td><input type="number" class="expenseInput" value="20"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
+<tr class="expense-row">
   <td>Natural Gas (~110)</td>
   <td><input type="number" class="expenseInput" value="116.92"></td>
   <td><input type="number" class="expenseInput" value="0"></td>
@@ -78,37 +79,36 @@
 </tr>
 <tr><td><strong>Individual expense</strong></td></tr>
 
-<tr>
+<tr class="expense-row">
   <td>Student loans person #1 </td>
   <td><input type="number" class="expenseInput" value="138"></td>
   <td><input type="number" class="expenseInput" value="550"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
+<tr class="expense-row">
   <td>Student loans person #2</td>
   <td><input type="number" class="expenseInput" value="0"></td>
   <td><input type="number" class="expenseInput" value="150"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-
+<tr class="expense-row">
   <td>Gas </td>
   <td><input type="number" class="expenseInput" value="75"></td>
   <td><input type="number" class="expenseInput" value="250"></td>
   <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
+<tr class="expense-row">
   <td>other (short term): court, car devices</td>
   <td><input type="number" class="expenseInput" value="0"></td>
      <td><input type="number" class="expenseInput" value="300"></td>
      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
+<tr class="expense-row">
   <td>other (Long term): car insurance</td>
   <td><input type="number" class="expenseInput" value="0"></td>
      <td><input type="number" class="expenseInput" value="300"></td>
      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
 </tr>
-<tr>
+<tr class="expense-row">
   <td>Miscellaneous, Entertainments</td>
   <td><input type="number" class="expenseInput" value="500"></td>
      <td><input type="number" class="expenseInput" value="100"></td>
@@ -154,9 +154,9 @@
   </div>
 </div>
 
-
 <br>
-<br><p class="centered-text">Summary
+<br>
+<p class="centered-text">Summary
   🏠 This page outlines shared and individual expenses for two people living together, covering house-related costs and individual financial responsibilities.</p>
 
 <footer>
@@ -167,5 +167,6 @@
 <script src="dark.js"></script>
 
 </body>
+
 </html>
 

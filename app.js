@@ -93,11 +93,6 @@ function initializePieChart() {
 // Call the initializePieChart function when the page loads
 document.addEventListener('DOMContentLoaded', initializePieChart);
 
-
-// Call the initializePieChart function when the page loads
-document.addEventListener('DOMContentLoaded', initializePieChart);
-
-
 // Function to update the pie chart
 function updatePieChart(totalExpenses, leftoverMoney) {
   const expenseChartCanvas = document.getElementById('expenseChart');
@@ -247,7 +242,21 @@ function updateBarCharts() {
   window.individualExpenseChart.update();
 }
 
+function sortRows() {
+  var table = $('#expensesTable');
+  var rows = $('.expense-row', table).toArray();
 
-// Call the updateBarCharts function when the page loads
-document.addEventListener('DOMContentLoaded', updateBarCharts);
+  rows.sort(function (a, b) {
+    var aValue = parseFloat($('input', a).eq(1).val());
+    var bValue = parseFloat($('input', b).eq(1).val());
 
+    return bValue - aValue;
+  });
+
+  $.each(rows, function (index, row) {
+    table.append(row);
+  });
+}
+
+// Call the sortRows function whenever an input value changes
+$(document).on('input', '.expenseInput', sortRows);
