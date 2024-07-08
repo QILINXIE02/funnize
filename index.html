@@ -18,155 +18,81 @@
 
     <label for="person1Income">(after tax) Person 1 Income:</label>
     <input type="number" id="person1Income" value="3000" required>
-
-    <label for="person2Name">Name for Person 2:</label>
-    <input type="text" id="person2Name" placeholder="Enter name" required>
-
-    <label for="person2Income">Person 2 Income:</label>
-    <input type="number" id="person2Income" value="2400" required>
-
-    <button type="button" onclick="calculate()">Calculate</button>
+      
+    <button type="button" id="calculateButton">Calculate</button>
   </form>
 
-<table id="expensesTable">
+  <table id="expensesTable">
     <tr>
         <th>Monthly Expense</th>
-        <th>Person 1 Amount</th>
-        <th>Person 2 Amount</th>
+        <th>Amount</th>
+        <th>Action</th>
     </tr>
-    <tr><td><strong>House shared expense</strong></td></tr>
     <tr class="expense-row">
-      <td>Rent</td>
-      <td><input type="number" class="expenseInput" value="1595"></td>
-      <td><input type="number" class="expenseInput" value="0"></td>
-      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-  </tr>
-  <tr class="expense-row">
-  <td>Garbage</td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-  <td><input type="number" class="expenseInput" value="35"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-      <td>Water (~100)</td>
-      <td><input type="number" class="expenseInput" value="101.98"></td>
-      <td><input type="number" class="expenseInput" value="0"></td>
-      <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-  </tr>
-  <tr class="expense-row">
-    <td>Eletricity (~75)</td>
-    <td><input type="number" class="expenseInput" value="75"></td>
-    <td><input type="number" class="expenseInput" value="0"></td>
-    <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
- <tr class="expense-row">
-  <td>Groceries</td>
-  <td><input type="number" class="expenseInput" value="400"></td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-  <td>Internet </td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-  <td><input type="number" class="expenseInput" value="20"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-  <td>Natural Gas (~110)</td>
-  <td><input type="number" class="expenseInput" value="116.92"></td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr><td><strong>Individual expense</strong></td></tr>
+        <td>Rent</td>
+        <td><input type="number" class="expenseInput" value="1295"></td>
+        <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
+    </tr>
+    <tr class="expense-row">
+        <td>Electricity</td>
+        <td><input type="number" class="expenseInput" value="40"></td>
+        <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
+    </tr>
+    <tr class="expense-row">
+        <td>Gas</td>
+        <td><input type="number" class="expenseInput" value="20"></td>
+        <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
+    </tr>
+    <tr class="expense-row">
+        <td>Student Loans</td>
+        <td><input type="number" class="expenseInput" value="195"></td>
+        <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
+    </tr>
+    <tr class="expense-row">
+        <td>Groceries</td>
+        <td><input type="number" class="expenseInput" value="150"></td>
+        <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
+    </tr>
+    <tr class="expense-row">
+        <td>Internet</td>
+        <td><input type="number" class="expenseInput" value="20"></td>
+        <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
+    </tr>
+  </table>
 
-<tr class="expense-row">
-  <td>Student loans person #1 </td>
-  <td><input type="number" class="expenseInput" value="138"></td>
-  <td><input type="number" class="expenseInput" value="550"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-  <td>Student loans person #2</td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-  <td><input type="number" class="expenseInput" value="150"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-<tr class="expense-row">
-  <td>Gas </td>
-  <td><input type="number" class="expenseInput" value="75"></td>
-  <td><input type="number" class="expenseInput" value="250"></td>
-  <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-  <td>other (short term): court, car devices</td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-     <td><input type="number" class="expenseInput" value="300"></td>
-     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-  <td>other (Long term): car insurance</td>
-  <td><input type="number" class="expenseInput" value="0"></td>
-     <td><input type="number" class="expenseInput" value="300"></td>
-     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-<tr class="expense-row">
-  <td>Miscellaneous, Entertainments</td>
-  <td><input type="number" class="expenseInput" value="500"></td>
-     <td><input type="number" class="expenseInput" value="100"></td>
-     <td><button type="button" onclick="deleteExpenseRow(this)">Delete</button></td>
-</tr>
-</table>
+  <button type="button" onclick="addExpense()">Add Expense</button>
+  <br><br>
 
-<button type="button" onclick="addExpense()">Add Expense</button>
-<button id="calculateButton" type="button">Calculate</button>
-<br><br>
-
-<div id="results">
-  <div id="person1Results">
-    <p>Person 1 Total Expenses: <span id="person1TotalExpenses" class="total">$0.00</span></p>
-    <p>Person 1 Leftover Money: <span id="person1LeftoverMoney" class="total">$0.00</span></p>
+  <div id="results">
+    <p>Total Expenses: <span id="totalExpenses">$0.00</span></p>
+    <p>Leftover Money: <span id="leftoverMoney">$0.00</span></p>
   </div>
 
-  <div id="person2Results">
-    <p>Person 2 Total Expenses: <span id="person2TotalExpenses" class="total">$0.00</span></p>
-    <p>Person 2 Leftover Money: <span id="person2LeftoverMoney" class="total">$0.00</span></p>
+  <div id="chartContainer">
+    <div class="chart">
+      <canvas id="expenseChart" width="400" height="400"></canvas>
+      <p>Click Calculate to activate Pie Chart</p>
+    </div>
+
+    <div class="chart">
+      <canvas id="houseExpenseChart" width="400" height="200"></canvas>
+      <p>*Note: these numbers are preset to the website numbers</p>
+    </div>
+
+    <div class="chart">
+      <canvas id="individualExpenseChart" width="400" height="200"></canvas>
+      <p>*Note: these numbers are preset to the website numbers</p>
+    </div>
   </div>
 
-  <div>
-    <p>Total Expenses: <span id="totalExpenses" class="total">$0</span></p>
-    <p>Leftover Money: <span id="leftoverMoney" class="total">$0</span></p>
-  </div>
-</div>
+  <br><br>
+  <p class="centered-text">Summary: This app can help with calculating expenses for individuals, covering house-related costs and individual financial expenses</p>
 
-<div id="chartContainer">
-  <div class="chart">
-    <canvas id="expenseChart" width="400" height="400"></canvas>
-    <p>Click Calculate to activate Pie Chart~</p>
-  </div>
+  <footer>
+    <p>&copy; 2024 Qilin Xie. All rights reserved.</p>
+  </footer>
 
-  <div class="chart">
-    <canvas id="houseExpenseChart" width="400" height="200"></canvas>
-    <p>*Note:these numbers are preset to the website numbers</p>
-  </div>
-
-  <div class="chart">
-    <canvas id="individualExpenseChart" width="400" height="200"></canvas>
-    <p>*Note:these numbers are preset to the website numbers</p>
-  </div>
-</div>
-
-<br>
-<br>
-<p class="centered-text">Summary
-  🏠 This app can help with calculating expenses for individuals or more, covering house-related costs and individual financial expenses</p>
-
-<footer>
-  <p>&copy; 2024 Qilin Xie. All rights reserved.</p>
-</footer>
-
-<script src="app.js"></script>
-<script src="dark.js"></script>
-
+  <script src="app.js"></script>
+  <script src="dark.js"></script>
 </body>
-
 </html>
-
