@@ -179,13 +179,6 @@ function initializeBarCharts() {
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
         data: [1595, 0, 101.98, 75, 400, 0, 116.92],
-      },
-      {
-        label: 'Alejandro',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-        data: [0, 35, 0, 0, 0, 20, 0],
       }]
     },
     options: {
@@ -206,14 +199,8 @@ function initializeBarCharts() {
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
         data: [138, 0, 75, 0, 0, 500],
-      },
-      {
-        label: 'Alejandro',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-        data: [550, 150, 250, 300, 300, 100],
-      }]
+      }
+  ]
     },
     options: {
       scales: {
