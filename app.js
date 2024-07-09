@@ -1,139 +1,28 @@
-function calculate() {
-  // Retrieve values from input fields
-  const person1Income = parseFloat(document.getElementById('person1Income').value) || 0;
-  const person2Income = parseFloat(document.getElementById('person2Income').value) || 0;
+document.addEventListener('DOMContentLoaded', () => {
+  initializePieChart();
+  initializeBarCharts();
+  updateBarCharts();
+});
 
-  // Calculate total income
-  const totalIncome = person1Income + person2Income;
+const DEFAULT_INCOME = 3000;
+const INITIAL_EXPENSES = {
+  rent: 1295,
+  electricity: 40,
+  gas: 20,
+  studentLoans: 195,
+  groceries: 150,
+  internet: 20
+};
+
+function calculate() {
+  // Retrieve income value
+  const totalIncome = DEFAULT_INCOME;
 
   // Calculate total expenses
   let totalExpenses = 0;
   const expenseInputs = document.querySelectorAll('.expenseInput');
 
-  expenseInputs.forEach((input, index) => {
-      const inputValue = parseFloat(input.value) || 0;
-      totalExpenses += inputValue;
-  });
-
-   // Validate expenses against income
-   if (totalExpenses > totalIncome) {
-    // Expenses exceed income, show alert and clear results
-    alert("Expenses cannot exceed total income!");
-    clearResults();
-    return;
-  }
-
-  // Calculate leftover money
-  const leftoverMoney = totalIncome - totalExpenses;
-
-  // Update the UI with the calculated values
-  document.getElementById('totalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
-  document.getElementById('leftoverMoney').textContent = `$${leftoverMoney.toFixed(2)}`;
-}
-
-function addExpense() {
-  const table = document.getElementById('expensesTable');
-  const newRow = table.insertRow(table.rows.length - 1); // Insert above the last row (before the total row)
-
-  // Add cells for expense name, Person 1 amount, and Person 2 amount
-  const cell1 = newRow.insertCell(0);
-  const cell2 = newRow.insertCell(1);
-  const cell3 = newRow.insertCell(2);
-
-  // Create input elements
-  const expenseInput = document.createElement('input');
-  expenseInput.type = 'text';
-  expenseInput.placeholder = 'Expense Name';
-  cell1.appendChild(expenseInput);
-
-  const person1Input = document.createElement('input');
-  person1Input.type = 'number';
-  person1Input.classList.add('expenseInput');
-  person1Input.value = '0';
-  cell2.appendChild(person1Input);
-
-  const person2Input = document.createElement('input');
-  person2Input.type = 'number';
-  person2Input.classList.add('expenseInput');
-  person2Input.value = '0';
-  cell3.appendChild(person2Input);
-}
-
-// Function to delete an expense row
-function deleteExpenseRow(button) {
-  const row = button.parentNode.parentNode;
-  row.parentNode.removeChild(row);
-}
-
-
-// Add this at the end of your existing JS code
-function initializePieChart() {
-  const expenseChartCanvas = document.getElementById('expenseChart');
-  const expenseChartContext = expenseChartCanvas.getContext('2d');
-
-  // Check if the chart already exists
-  if (window.myPieChart) {
-    // Chart exists, destroy it
-    window.myPieChart.destroy();
-  }
-
-  window.myPieChart = new Chart(expenseChartContext, {
-    type: 'pie',
-    data: {
-      labels: ['Total Expenses', 'Leftover Money'],
-      datasets: [{
-        data: [0, 0], // Initial values
-        backgroundColor: ['#FF6384', '#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
-      }],
-    },
-  });
-}
-
-// Call the initializePieChart function when the page loads
-document.addEventListener('DOMContentLoaded', initializePieChart);
-
-// Function to update the pie chart
-function updatePieChart(totalExpenses, leftoverMoney) {
-  const expenseChartCanvas = document.getElementById('expenseChart');
-  const expenseChartContext = expenseChartCanvas.getContext('2d');
-
-  // Clear previous chart
-  if (window.myPieChart) {
-    window.myPieChart.destroy();
-  }
-
-  // Clear the canvas
-  expenseChartContext.clearRect(0, 0, expenseChartCanvas.width, expenseChartCanvas.height);
-
-  // Create a new pie chart
-  window.myPieChart = new Chart(expenseChartContext, {
-    type: 'pie',
-    data: {
-      labels: ['Total Expenses', 'Leftover Money'],
-      datasets: [{
-        data: [totalExpenses, leftoverMoney],
-        backgroundColor: ['#FF6384', '#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
-      }],
-    },
-  });
-}
-
-
-function calculate() {
-  // Retrieve values from input fields
-  const person1Income = parseFloat(document.getElementById('person1Income').value) || 0;
-  const person2Income = parseFloat(document.getElementById('person2Income').value) || 0;
-
-  // Calculate total income
-  const totalIncome = person1Income + person2Income;
-
-  // Calculate total expenses
-  let totalExpenses = 0;
-  const expenseInputs = document.querySelectorAll('.expenseInput');
-
-  expenseInputs.forEach((input, index) => {
+  expenseInputs.forEach((input) => {
     const inputValue = parseFloat(input.value) || 0;
     totalExpenses += inputValue;
   });
@@ -153,32 +42,97 @@ function calculate() {
   updatePieChart(totalExpenses, leftoverMoney);
 }
 
+function addExpense() {
+  const table = document.getElementById('expensesTable');
+  const newRow = table.insertRow(table.rows.length - 1); // Insert above the last row (before the total row)
+
+  // Add cells for expense name and amount
+  const cell1 = newRow.insertCell(0);
+  const cell2 = newRow.insertCell(1);
+
+  // Create input elements
+  const expenseInput = document.createElement('input');
+  expenseInput.type = 'text';
+  expenseInput.placeholder = 'Expense Name';
+  cell1.appendChild(expenseInput);
+
+  const amountInput = document.createElement('input');
+  amountInput.type = 'number';
+  amountInput.classList.add('expenseInput');
+  amountInput.value = '0';
+  cell2.appendChild(amountInput);
+}
+
+function deleteExpenseRow(button) {
+  const row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function initializePieChart() {
+  const expenseChartCanvas = document.getElementById('expenseChart');
+  const expenseChartContext = expenseChartCanvas.getContext('2d');
+
+  if (window.myPieChart) {
+    window.myPieChart.destroy();
+  }
+
+  window.myPieChart = new Chart(expenseChartContext, {
+    type: 'pie',
+    data: {
+      labels: ['Total Expenses', 'Leftover Money'],
+      datasets: [{
+        data: [0, 0], // Initial values
+        backgroundColor: ['#FF6384', '#36A2EB'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+      }],
+    },
+  });
+}
+
+function updatePieChart(totalExpenses, leftoverMoney) {
+  const expenseChartCanvas = document.getElementById('expenseChart');
+  const expenseChartContext = expenseChartCanvas.getContext('2d');
+
+  if (window.myPieChart) {
+    window.myPieChart.destroy();
+  }
+
+  expenseChartContext.clearRect(0, 0, expenseChartCanvas.width, expenseChartCanvas.height);
+
+  window.myPieChart = new Chart(expenseChartContext, {
+    type: 'pie',
+    data: {
+      labels: ['Total Expenses', 'Leftover Money'],
+      datasets: [{
+        data: [totalExpenses, leftoverMoney],
+        backgroundColor: ['#FF6384', '#36A2EB'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+      }],
+    },
+  });
+}
+
 function clearResults() {
   document.getElementById('totalExpenses').textContent = '$0.00';
   document.getElementById('leftoverMoney').textContent = '$0.00';
 }
 
-updatePieChart(0, 0);
-
-document.getElementById('calculateButton').addEventListener('click', calculate);
-
-
-
-//
 function initializeBarCharts() {
   const houseExpenseChartCanvas = document.getElementById('houseExpenseChart');
   const individualExpenseChartCanvas = document.getElementById('individualExpenseChart');
 
+  const initialExpensesData = Object.values(INITIAL_EXPENSES);
+
   window.houseExpenseChart = new Chart(houseExpenseChartCanvas, {
     type: 'bar',
     data: {
-      labels: ['Rent', 'Garbage', 'Water', 'Electricity', 'Groceries', 'Internet', 'Natural Gas'],
+      labels: ['Rent', 'Gas', 'Student Loans', 'Groceries', 'Internet'],
       datasets: [{
-        label: 'Qilin',
+        label: 'Expenses',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
-        data: [1595, 0, 101.98, 75, 400, 0, 116.92],
+        data: initialExpensesData,
       }]
     },
     options: {
@@ -192,15 +146,14 @@ function initializeBarCharts() {
   window.individualExpenseChart = new Chart(individualExpenseChartCanvas, {
     type: 'bar',
     data: {
-      labels: ['Student Loans #1', 'Student Loans #2', 'Gas', 'Other Short Term', 'Other Long Term', 'Miscellaneous'],
+      labels: ['Expenses'],
       datasets: [{
-        label: 'Qilin',
+        label: 'Expenses',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
-        data: [138, 0, 75, 0, 0, 500],
-      }
-  ]
+        data: initialExpensesData,
+      }]
     },
     options: {
       scales: {
@@ -211,39 +164,34 @@ function initializeBarCharts() {
   });
 }
 
-// Call the initializeBarCharts function when the page loads
-document.addEventListener('DOMContentLoaded', initializeBarCharts);
-
-// Function to update the bar charts
 function updateBarCharts() {
-  // Update the data of the house expense chart
-  window.houseExpenseChart.data.datasets[0].data = [1595, 0, 101.98, 75, 400, 0, 116.92];
-  window.houseExpenseChart.data.datasets[1].data = [0, 35, 0, 0, 0, 20, 0];
+  const initialExpensesData = Object.values(INITIAL_EXPENSES);
 
-  // Update the data of the individual expense chart
-  window.individualExpenseChart.data.datasets[0].data = [138, 0, 75, 0, 0, 500];
-  window.individualExpenseChart.data.datasets[1].data = [550, 150, 250, 300, 300, 100];
-
-  // Update the charts
+  window.houseExpenseChart.data.datasets[0].data = initialExpensesData;
   window.houseExpenseChart.update();
+
+  window.individualExpenseChart.data.datasets[0].data = initialExpensesData;
   window.individualExpenseChart.update();
 }
 
 function sortRows() {
-  var table = $('#expensesTable');
-  var rows = $('.expense-row', table).toArray();
+  const table = document.getElementById('expensesTable');
+  const rows = Array.from(document.querySelectorAll('.expense-row'));
 
-  rows.sort(function (a, b) {
-    var aValue = parseFloat($('input', a).eq(1).val());
-    var bValue = parseFloat($('input', b).eq(1).val());
+  rows.sort((a, b) => {
+    const aValue = parseFloat(a.querySelector('input').value);
+    const bValue = parseFloat(b.querySelector('input').value);
 
     return bValue - aValue;
   });
 
-  $.each(rows, function (index, row) {
-    table.append(row);
-  });
+  rows.forEach(row => table.appendChild(row));
 }
 
-// Call the sortRows function whenever an input value changes
-$(document).on('input', '.expenseInput', sortRows);
+document.getElementById('calculateButton').addEventListener('click', calculate);
+document.getElementById('addExpenseButton').addEventListener('click', addExpense);
+document.addEventListener('input', (event) => {
+  if (event.target.classList.contains('expenseInput')) {
+    sortRows();
+  }
+});
